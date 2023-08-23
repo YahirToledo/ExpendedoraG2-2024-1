@@ -8,7 +8,24 @@ namespace ExpendedoraG2_2024_1
         #region Atributos
         private string marca;
         private ushort cantproductos;
+        private byte temperatura;
         private float precio;
+
+
+        #endregion
+
+        #region Propiedades
+        public byte Temperatura 
+        {
+            get => temperatura;//get lectura
+            set 
+            {
+                if (0 < value && value < 25) 
+                    temperatura = value;//limites de escritura
+                else
+                    temperatura = 20;
+            } 
+        }
         #endregion
 
         #region Metodos
@@ -63,8 +80,16 @@ namespace ExpendedoraG2_2024_1
         //Sobrecargar un metodo
         public Expendedora(bool Mantenimiento)
         {
+            Temperatura = 20;
             if (Mantenimiento == true)
                 Console.WriteLine("Entrando en modo mantenimiento");
+            Console.WriteLine("Cambiando temperatura");
+            LimpiarDisplay();
+            for (int i = 0; i < 20; i++)
+            {
+                Temperatura++;
+            }
+            Console.WriteLine("Mostrando temperatura {0} [°C]", Temperatura);
         }
         #endregion
     }
