@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace ExpendedoraG2_2024_1
 {
-    internal class Expendedora
+    internal abstract class Expendedora
     {
         #region Atributos
         private string marca;
@@ -26,14 +26,16 @@ namespace ExpendedoraG2_2024_1
                     temperatura = 20;
             } 
         }
+
+        public string Marca { get => marca; set => marca = value; }
         #endregion
 
         #region Metodos
-        private void Saludar()
+        public void Saludar()
         {
             Console.WriteLine("Bienvenido! Elige un producto");
         }
-        private void LimpiarDisplay()
+        public void LimpiarDisplay()
         {
             Thread.Sleep(2000);
             Console.Clear();
@@ -66,11 +68,11 @@ namespace ExpendedoraG2_2024_1
         #region Constructor
         public Expendedora()
         {
-            marca = "AMS";
+            Marca = "AMS";
             precio = 18;
             Saludar();
             LimpiarDisplay();
-            Console.WriteLine("Marca: {0}", marca);
+            Console.WriteLine("Marca: {0}", Marca);
             LimpiarDisplay();
             string codigo = MostrarProducto();
             LimpiarDisplay();
@@ -82,7 +84,7 @@ namespace ExpendedoraG2_2024_1
         {
             Temperatura = 20;
             if (Mantenimiento == true)
-                Console.WriteLine("Entrando en modo mantenimiento");
+            Console.WriteLine("Entrando en modo mantenimiento");
             Console.WriteLine("Cambiando temperatura");
             LimpiarDisplay();
             for (int i = 0; i < 20; i++)
